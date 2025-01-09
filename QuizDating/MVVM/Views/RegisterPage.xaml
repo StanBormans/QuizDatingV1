@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizDating.MVVM.Views.RegisterPage"
+             Title="RegisterPage"
+             BackgroundColor="#f883b7"
+             Shell.NavBarIsVisible="false">
+    <VerticalStackLayout
+    Padding="20"
+    Spacing="10">
+
+        <Image 
+        Source="logo.png"
+        WidthRequest="250"
+        HeightRequest="250"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        />
+
+        <Label 
+        Text="Registeer"
+        FontSize="36"
+        TextColor="White"
+        FontAttributes="Bold"
+        HorizontalOptions="Center" />
+
+        <VerticalStackLayout
+        HorizontalOptions="Center">
+            <Label 
+            Text="{Binding UserName}"
+            TextColor="White"
+            FontSize="20"
+            />
+
+            <Border
+                Stroke="Black"
+                StrokeThickness="1"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 5"
+                WidthRequest="300"
+                Padding="0"
+                HorizontalOptions="Center">
+
+                <Entry 
+                    x:Name="UsernameEntry"
+                    Placeholder="Gebruikersnaam"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    WidthRequest="300"
+                    HorizontalOptions="Fill" />
+            </Border>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+        HorizontalOptions="Center">
+            <Label 
+            Text="{Binding Password}"
+            TextColor="White"
+            FontSize="20"
+            />
+            <Border
+                Stroke="Black"
+                StrokeThickness="1"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 5"
+                WidthRequest="300"
+                Padding="0"
+                HorizontalOptions="Center">
+
+                <Entry 
+                    x:Name="PasswordEntry"
+                    Placeholder="Wachtwoord"
+                    IsPassword="True"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    WidthRequest="300"
+                    HorizontalOptions="Fill" />
+            </Border>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout
+        HorizontalOptions="Center">
+            <Label 
+                Text="{Binding ConfirmPassword}"
+                TextColor="White"
+                FontSize="20"
+                />
+            <Border
+                Stroke="Black"
+                StrokeThickness="1"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 5"
+                WidthRequest="300"
+                Padding="0"
+                HorizontalOptions="Center">
+
+                <Entry 
+                    x:Name="ConfirmPasswordEntry"
+                    Placeholder="Bevestig wachtwoord"
+                    IsPassword="True"
+                    TextColor="Black"
+                    BackgroundColor="Transparent"
+                    WidthRequest="300"
+                    HorizontalOptions="Fill" />
+            </Border>
+        </VerticalStackLayout>
+
+        <Label 
+             x:Name="MessageLabel"
+             FontSize="Small"
+             TextColor="Red"
+             HorizontalOptions="Center" />
+
+        <Button 
+            x:Name="saveButton"
+            Text="Registeer"
+            FontSize="20"
+            BackgroundColor="#0ad8c8"
+            TextColor="White"
+            Clicked="OnRegisterClicked"
+            WidthRequest="200"
+            BorderColor="Black"
+            BorderWidth="1"
+            TranslationY="30" />
+    </VerticalStackLayout>
+</ContentPage>

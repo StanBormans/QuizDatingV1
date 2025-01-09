@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizDating.MatchPage"
+             Title="MatchPage"
+             BackgroundColor="#f883b7"
+             Shell.NavBarIsVisible="false">
+    <VerticalStackLayout>
+        <Grid
+            Padding="30, 20, 30, 0"
+            RowDefinitions="Auto"
+            ColumnDefinitions="*, *">
+
+            <Button 
+                Text="Back"
+                BackgroundColor="#0AD8C8"
+                BorderColor="Black"
+                BorderWidth="1"
+                Command="{Binding OnBackClicked}"
+                WidthRequest="150"
+                FontSize="24"
+                Grid.Column="0"
+                HorizontalOptions="Start" />
+
+            <Button 
+                Text="Matches"
+                BackgroundColor="#0AD8C8"
+                BorderColor="Black"
+                BorderWidth="1"
+                Command="{Binding OnMatchesClicked}"
+                WidthRequest="150"
+                FontSize="24"
+                Grid.Column="1"
+                HorizontalOptions="End" />
+        </Grid>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="10"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <Border
+                Stroke="Black"
+                StrokeThickness="3"
+                BackgroundColor="#0AD8C8"
+                StrokeShape="RoundRectangle 10"
+                WidthRequest="300"
+                Padding="10"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+                <StackLayout
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" >
+                    
+                    <Image 
+                        x:Name="ProfilePicture"
+                        HeightRequest="300"
+                        WidthRequest="300"
+                        Aspect="AspectFill"
+                        Margin="10" />
+
+                    <Label 
+                        x:Name="UserNameLabel"
+                        FontSize="24"
+                        HorizontalTextAlignment="Center"
+                        Margin="10"
+                        TextColor="White"/>
+
+                    <StackLayout 
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center"
+                        HeightRequest="300">
+                        
+                        <Button 
+                            Text="Dislike"
+                            BackgroundColor="Red"
+                            Command="{Binding OnDislikeClicked}"
+                            Margin="10"
+                            WidthRequest="115"/>
+                        
+                        <Button 
+                            Text="Like"
+                            BackgroundColor="LimeGreen"
+                            Command="{Binding OnLikeClicked}"
+                            Margin="10"
+                            WidthRequest="115" />
+                    </StackLayout>
+                </StackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

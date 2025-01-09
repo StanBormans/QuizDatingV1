@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizDating.MVVM.Views.MainPage"
+             BackgroundColor="#F883B7">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="25">
+
+            <Button
+                FontSize="18"
+                Text="Logout"
+                TextColor="White"
+                BackgroundColor="#0AD8C8"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                WidthRequest="100"
+                HeightRequest="40"
+                CornerRadius="10"
+                BorderColor="black"
+                BorderWidth="1"
+                ZIndex="10"
+                Clicked="GoToLogin" />
+
+            <Image
+                Source="logo.png"
+                WidthRequest="300"
+                HeightRequest="300"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                TranslationY="-25" /> 
+
+           
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Spacing="10"
+                Padding="10" >
+
+                <Button
+                    Text="Match"
+                    BackgroundColor="#0AD8C8"
+                    TextColor="White"
+                    Clicked="GoToMatch"
+                    WidthRequest="170"
+                    HeightRequest="300"
+                    CornerRadius="20"
+                    BorderColor="black"
+                    BorderWidth="1"
+                    TranslationY="40"
+                    FontSize="30" />
+
+                <Button
+                    Text="Quiz"
+                    BackgroundColor="#0AD8C8"
+                    TextColor="White"
+                    Clicked="GoToQuiz"
+                    WidthRequest="170"
+                    HeightRequest="300"
+                    CornerRadius="20"
+                    BorderColor="black"
+                    BorderWidth="1"
+                    TranslationY="40"
+                    FontSize="30" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
