@@ -10,7 +10,7 @@ public partial class QuizPage : ContentPage
     public QuizPage()
     {
         InitializeComponent();
-        BindingContext = new QuizPageViewModel(); // Ensure the ViewModel is set as the BindingContext
+        BindingContext = new QuizPageViewModel(); // Set ViewModel as BindingContext
         LoadQuizzes();
     }
 
@@ -32,7 +32,7 @@ public partial class QuizPage : ContentPage
         var viewModel = BindingContext as QuizPageViewModel;
         if (viewModel != null)
         {
-            viewModel.Quizzes = quizzes; // Update the Quizzes property in the ViewModel
+            viewModel.Quizzes = quizzes; // Bind quizzes to the UI
         }
     }
 
@@ -40,13 +40,11 @@ public partial class QuizPage : ContentPage
     {
         if (sender is Button button && button.CommandParameter is Quiz quiz)
         {
-            string action = await DisplayActionSheet($"Opties voor {quiz.Name}", "Cancel", null, "Update", "Delete");
+            string action = await DisplayActionSheet($"Options for {quiz.Name}", "Cancel", null, "Update", "Delete");
 
             if (action == "Update")
             {
-                var dbService = new LocalDbService();
-                await dbService.UpdateQuiz(quiz);
-                Application.Current.MainPage = new UpdateQuiz(quiz);
+                Application.Current.MainPage = new UpdateQuiz(quiz); // Navigate to update quiz
             }
             else if (action == "Delete")
             {
@@ -55,6 +53,14 @@ public partial class QuizPage : ContentPage
                 await DisplayAlert("Deleted", $"Quiz '{quiz.Name}' has been deleted.", "OK");
                 LoadQuizzes();
             }
+        }
+    }
+
+    private async void OnStartQuizClicked(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.CommandParameter is Quiz quiz)
+        {
+            Application.Current.MainPage = new TakeQuizPage(quiz); // Navigate to take quiz page
         }
     }
 }

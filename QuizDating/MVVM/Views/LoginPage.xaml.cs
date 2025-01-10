@@ -15,8 +15,8 @@ public partial class LoginPage : ContentPage
 
     public void LoginClicked(object sender, EventArgs e)
     {
-        string hardcodedUsername = "admin";
-        string hardcodedPassword = "test";
+        string hardcodedUsername = "a";
+        string hardcodedPassword = "a";
 
         var username = UsernameEntry.Text;
         var password = PasswordEntry.Text;
