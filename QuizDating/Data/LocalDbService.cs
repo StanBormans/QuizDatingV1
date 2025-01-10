@@ -34,6 +34,11 @@ namespace QuizDating.Data
             _connection.Insert(user);
         }
 
+        public async Task<User> GetUserByUsername(string username)
+        {
+            return _connection.Table<User>().FirstOrDefault(u => u.UserName == username);
+        }
+
         //Quiz
 
         public async Task CreateQuiz(Quiz quiz)
