@@ -13,6 +13,8 @@ namespace QuizDating.Models
         [AutoIncrement]
         [Column("Id")]
         public int Id { get; set; }
+        [Column("Name")]
+        public string? Name { get; set; }
         [Ignore]
         public List<Question> Questions { get; set; } = new List<Question>();
         [Column("ResultId")]

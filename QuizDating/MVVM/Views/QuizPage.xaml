@@ -10,27 +10,70 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
-        <Button
-            Text="Back"
-            BackgroundColor="#0ad8c8"
-            TextColor="White"
-            HorizontalOptions="Start"
-            VerticalOptions="Start"
-            Margin="10,10,0,0"
-            Clicked="OnBackClicked" />
-        <ScrollView Grid.Row="1">
-            <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-                <Image 
-                Source="logo.png"
-                WidthRequest="300" />
-                <Label
-                Text="Quiz"
-                FontSize="48"
-                HorizontalOptions="Center" />
-            </VerticalStackLayout>
-        </ScrollView>
+
+        <Grid Grid.Row="0" Padding="10" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Text="Back"
+                BackgroundColor="#0ad8c8"
+                TextColor="White"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Grid.Column="0"
+                Clicked="OnBackClicked" />
+
+            <Label
+                Text="Quizzes"
+                FontSize="24"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Column="1" />
+
+            <Button
+                Text="Create"
+                BackgroundColor="#0ad8c8"
+                TextColor="White"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Grid.Column="2"
+                Clicked="OnCreateClicked" />
+        </Grid>
+        <CollectionView
+            Grid.Row="1"
+            x:Name="QuizzesLayout"
+            ItemsSource="{Binding Quizzes}"
+            SelectionMode="None"
+            BackgroundColor="White">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                    Stroke="#cccccc"
+                    StrokeThickness="1"
+                    StrokeShape="Rectangle"
+                    Padding="10"
+                    Margin="0,5"
+                    BackgroundColor="White">
+                        <VerticalStackLayout>
+                            <Label
+                            Text="{Binding Name}"
+                            FontSize="16"
+                            TextColor="Black" />
+                            <Button
+                            Text="Options"
+                            BackgroundColor="#cccccc"
+                            TextColor="Black"
+                            CommandParameter="{Binding .}"
+                            Clicked="OnQuizOptionsClicked" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>

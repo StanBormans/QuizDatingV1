@@ -17,5 +17,7 @@ namespace QuizDating.Models
         public string? Title { get; set; }
         [Column("Description")]
         public string? Description { get; set; }
+        [Column("QuizId")]
+        public int QuizId { get; set; }
     }
 }

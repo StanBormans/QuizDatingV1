@@ -20,6 +20,8 @@ namespace QuizDating.Data
                 DataConstanst.flags
             );
             _connection.CreateTable<User>();
+            _connection.CreateTable<Quiz>();
+            _connection.CreateTable<Question>();
         }
 
         //User
@@ -32,29 +34,51 @@ namespace QuizDating.Data
 
         //Quiz
 
-        public async Task<List<Quiz>> GetQuiz()
-        {
-            return _connection.Table<Quiz>().ToList();
-        }
-
-        public async Task<Quiz> GetQuizById(int id)
-        {
-            return _connection.Table<Quiz>().Where(x => x.Id == id).FirstOrDefault();
-        }
-
         public async Task CreateQuiz(Quiz quiz)
         {
             _connection.Insert(quiz);
+            foreach (var question in quiz.Questions)
+            {
+                question.QuizId = quiz.Id;
+                _connection.Insert(question);
+            }
+        }
+
+        public async Task<List<Quiz>> GetQuizzesWithQuestions()
+        {
+            var quizzes = _connection.Table<Quiz>().ToList();
+            foreach (var quiz in quizzes)
+            {
+                quiz.Questions = _connection.Table<Question>().Where(q => q.QuizId == quiz.Id).ToList();
+            }
+            return quizzes;
         }
 
         public async Task UpdateQuiz(Quiz quiz)
         {
             _connection.Update(quiz);
+            foreach (var question in quiz.Questions)
+            {
+                if (question.Id == 0)
+                {
+                    question.QuizId = quiz.Id;
+                    _connection.Insert(question);
+                }
+                else
+                {
+                    _connection.Update(question);
+                }
+            }
         }
 
-        public async Task DeleteQuiz(Quiz quiz)
+        public async Task DeleteQuiz(int quizId)
         {
-            _connection.Delete(quiz);
+            var questions = _connection.Table<Question>().Where(q => q.QuizId == quizId).ToList();
+            foreach (var question in questions)
+            {
+                _connection.Delete(question);
+            }
+            _connection.Delete<Quiz>(quizId);
         }
     }
 }
