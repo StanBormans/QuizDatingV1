@@ -9,8 +9,8 @@ namespace QuizDating.Models
 {
     public class CharacterResult
     {
-        [PrimaryKey] // Add this to mark the property as the primary key
-        [AutoIncrement] // Optional: Automatically increment the ID for new entries
+        [PrimaryKey]
+        [AutoIncrement]
         public int Id { get; set; }
         [Column("Outgoing")]
         public int Outgoing {  get; set; }

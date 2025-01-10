@@ -17,8 +17,8 @@ namespace QuizDating.Models
         public string? Name { get; set; }
         [Ignore]
         public List<Question> Questions { get; set; } = new List<Question>();
-        [Column("ResultId")]
-        public int ResultId { get; set; }
+        [Column("CharacterResultId")]
+        public int CharacterResultId { get; set; }
         [Ignore]
         public CharacterResult? CharacterResult { get; set; }
         [Column("Finished")]
