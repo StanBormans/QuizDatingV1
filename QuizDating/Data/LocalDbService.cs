@@ -38,7 +38,12 @@ namespace QuizDating.Data
 
         public async Task CreateQuiz(Quiz quiz)
         {
+            var characterResult = new CharacterResult();
+            _connection.Insert(characterResult);
+
+            quiz.CharacterResultId = characterResult.Id;
             _connection.Insert(quiz);
+
             foreach (var question in quiz.Questions)
             {
                 question.QuizId = quiz.Id;
@@ -58,15 +63,17 @@ namespace QuizDating.Data
 
         public async Task<Quiz> GetQuizWithQuestions(int quizId)
         {
-            // Fetch the quiz by Id
             var quiz = _connection.Table<Quiz>().FirstOrDefault(q => q.Id == quizId);
-
             if (quiz != null)
             {
-                // Fetch and assign its questions
+                // Fetch associated questions
                 quiz.Questions = _connection.Table<Question>()
                     .Where(q => q.QuizId == quiz.Id)
                     .ToList();
+
+                // Fetch associated CharacterResult
+                quiz.CharacterResult = _connection.Table<CharacterResult>()
+                    .FirstOrDefault(cr => cr.Id == quiz.CharacterResultId);
             }
 
             return quiz;

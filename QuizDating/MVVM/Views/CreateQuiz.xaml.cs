@@ -58,14 +58,17 @@ public partial class CreateQuiz : ContentPage
         // Add the first question
         if (!string.IsNullOrWhiteSpace(InitialQuestionEntry.Text))
         {
+            var optionAEffect = InitialOptionAEffectPicker.SelectedItem as string;
+            var optionBEffect = InitialOptionBEffectPicker.SelectedItem as string;
+
             quiz.Questions.Add(new Question
             {
                 Title = InitialQuestionEntry.Text,
                 Description = InitialDescriptionEntry.Text,
                 OptionA = InitialOptionAEntry.Text,
                 OptionB = InitialOptionBEntry.Text,
-                ResultAIncrement = GetEffectValue(InitialOptionAEffectPicker.SelectedItem),
-                ResultBIncrement = GetEffectValue(InitialOptionBEffectPicker.SelectedItem)
+                EffectA = optionAEffect,
+                EffectB = optionBEffect
             });
         }
 
@@ -85,8 +88,8 @@ public partial class CreateQuiz : ContentPage
                 Description = description,
                 OptionA = optionA,
                 OptionB = optionB,
-                ResultAIncrement = GetEffectValue(optionAEffect),
-                ResultBIncrement = GetEffectValue(optionBEffect)
+                EffectA = optionAEffect,
+                EffectB = optionBEffect
             });
         }
 

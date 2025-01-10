@@ -17,23 +17,23 @@
 
                 <!-- Initial Question Fields -->
                 <Entry x:Name="InitialQuestionEntry"
-                       Placeholder="Enter your first question title"
-                       FontSize="16" />
+                   Placeholder="Enter your first question title"
+                   FontSize="16" />
                 <Entry x:Name="InitialDescriptionEntry"
-                       Placeholder="Enter your first question description"
-                       FontSize="16" />
+                   Placeholder="Enter your first question description"
+                   FontSize="16" />
                 <Entry x:Name="InitialOptionAEntry"
-                       Placeholder="Enter Option A"
-                       FontSize="16" />
+                   Placeholder="Enter Option A"
+                   FontSize="16" />
                 <Picker x:Name="InitialOptionAEffectPicker"
-                        Title="Effect of Option A"
-                        ItemsSource="{Binding EffectOptions}" />
+                    Title="Effect of Option A"
+                    ItemsSource="{Binding EffectOptions}" />
                 <Entry x:Name="InitialOptionBEntry"
-                       Placeholder="Enter Option B"
-                       FontSize="16" />
+                   Placeholder="Enter Option B"
+                   FontSize="16" />
                 <Picker x:Name="InitialOptionBEffectPicker"
-                        Title="Effect of Option B"
-                        ItemsSource="{Binding EffectOptions}" />
+                    Title="Effect of Option B"
+                    ItemsSource="{Binding EffectOptions}" />
 
                 <!-- Add Question Button -->
                 <Button Text="Add Question"

@@ -27,24 +27,24 @@ namespace QuizDating.Models
         public string? OptionB { get; set; }
 
         [Column("EffectA")]
-        public string? EffectA { get; set; } // Effect of Option A (e.g., Outgoing, Social, Openness)
+        public string? EffectA { get; set; }
 
         [Column("EffectB")]
-        public string? EffectB { get; set; } // Effect of Option B (e.g., Outgoing, Social, Openness)
+        public string? EffectB { get; set; }
 
         [Column("ResultAIncrement")]
-        public int ResultAIncrement { get; set; } // Increment value for Option A
+        public int ResultAIncrement { get; set; }
 
         [Column("ResultBIncrement")]
-        public int ResultBIncrement { get; set; } // Increment value for Option B
+        public int ResultBIncrement { get; set; }
 
         [Ignore]
-        public Button OptionAButton { get; set; } // UI-specific property, ignored by the database
+        public Button OptionAButton { get; set; }
 
         [Ignore]
-        public Button OptionBButton { get; set; } // UI-specific property, ignored by the database
+        public Button OptionBButton { get; set; }
 
         [Column("QuizId")]
-        public int QuizId { get; set; } // Foreign key linking to the parent Quiz
+        public int QuizId { get; set; }
     }
 }

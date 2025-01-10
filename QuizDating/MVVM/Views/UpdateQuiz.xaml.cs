@@ -38,14 +38,14 @@ public partial class UpdateQuiz : ContentPage
         {
             Title = "Effect of Option A",
             ItemsSource = EffectOptions,
-            SelectedItem = question.EffectA
+            SelectedItem = question.EffectA // Restore saved value
         };
         var optionBEntry = new Entry { Text = question.OptionB, Placeholder = "Edit Option B", FontSize = 16 };
         var optionBEffectPicker = new Picker
         {
             Title = "Effect of Option B",
             ItemsSource = EffectOptions,
-            SelectedItem = question.EffectB
+            SelectedItem = question.EffectB // Restore saved value
         };
 
         var questionStack = new StackLayout
