@@ -11,10 +11,6 @@ namespace QuizDating.MVVM.ViewModels
 {
     public partial class QuizPageViewModel : ObservableObject
     {
-        [RelayCommand]
-        public void Back()
-        {
-            Application.Current.MainPage = new MainPage();
-        }
+        
     }
 }
