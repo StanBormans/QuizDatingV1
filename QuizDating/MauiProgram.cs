@@ -25,6 +25,7 @@ namespace QuizDating
 
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<RegisterPage>();
+            builder.Services.AddTransient<QuizPage>();
             builder.Services.AddTransient<MatchPageViewModel>();
             builder.Services.AddTransient<QuizPageViewModel>();
 

@@ -22,24 +22,39 @@ namespace QuizDating.Data
             _connection.CreateTable<User>();
         }
 
-        public async Task<List<User>> GetUsers()
-        {
-            return _connection.Table<User>().ToList();
-        }
+        //User
+
 
         public async Task CreateUser(User user)
         {
             _connection.Insert(user);
         }
 
-        public async Task UpdateUser(User user)
+        //Quiz
+
+        public async Task<List<Quiz>> GetQuiz()
         {
-            _connection.Update(user);
+            return _connection.Table<Quiz>().ToList();
         }
 
-        public async Task DeleteUser(User user)
+        public async Task<Quiz> GetQuizById(int id)
         {
-            _connection.Delete(user);
+            return _connection.Table<Quiz>().Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public async Task CreateQuiz(Quiz quiz)
+        {
+            _connection.Insert(quiz);
+        }
+
+        public async Task UpdateQuiz(Quiz quiz)
+        {
+            _connection.Update(quiz);
+        }
+
+        public async Task DeleteQuiz(Quiz quiz)
+        {
+            _connection.Delete(quiz);
         }
     }
 }
