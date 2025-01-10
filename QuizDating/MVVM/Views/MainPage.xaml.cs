@@ -28,5 +28,10 @@ namespace QuizDating.MVVM.Views
             SessionService.Logout();
             Application.Current.MainPage = new LoginPage(LocalDbService);
         }
+
+        public void GotToProfile(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new ProfilePage();
+        }
     }
 }

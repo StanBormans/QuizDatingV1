@@ -14,7 +14,17 @@ namespace QuizDating.Data
         public static User LoggedInUser
         {
             get => _loggedInUser;
-            set => _loggedInUser = value;
+            set
+            {
+                _loggedInUser = value;
+
+                // Ensure the CharacterResult is loaded
+                if (_loggedInUser != null && _loggedInUser.CharacterResultId > 0)
+                {
+                    var dbService = new LocalDbService();
+                    _loggedInUser.CharacterResult = dbService.GetCharacterResult(_loggedInUser.CharacterResultId);
+                }
+            }
         }
 
         public static bool IsUserLoggedIn => _loggedInUser != null;

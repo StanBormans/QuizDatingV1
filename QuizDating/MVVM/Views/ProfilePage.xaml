@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizDating.MVVM.Views.ProfilePage"
+             Title="Profile"
+             BackgroundColor="#f0f0f0">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            <Button 
+                Text="Back"
+                HorizontalOptions="Start"
+                Clicked="OnBackClicked"/>
+            
+            <!-- Profile Picture -->
+            <Image x:Name="ProfileImage"
+                   Source="default_profile_pic.jpg"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   HorizontalOptions="Center" />
+
+            <!-- Username -->
+            <Label x:Name="UsernameLabel"
+                   FontSize="24"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+
+            <!-- Character Results -->
+            <Label Text="Character Results" FontSize="20" TextColor="Gray" HorizontalOptions="Center" />
+            <Label x:Name="OutgoingLabel"
+                   FontSize="18"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+            <Label x:Name="SocialLabel"
+                   FontSize="18"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+            <Label x:Name="OpennessLabel"
+                   FontSize="18"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+
+            <!-- Update Profile Button -->
+            <Button Text="Update Profile Picture"
+                    BackgroundColor="#0ad8c8"
+                    TextColor="White"
+                    Clicked="OnUpdateProfilePictureClicked" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
