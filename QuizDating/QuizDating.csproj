@@ -83,10 +83,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Repositories\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="MVVM\Views\LoginPage.xaml.cs">
 	    <DependentUpon>LoginPage.xaml</DependentUpon>
 	  </Compile>

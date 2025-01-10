@@ -1,7 +1,10 @@
-﻿namespace QuizDating.MVVM.Views
+﻿using QuizDating.Data;
+
+namespace QuizDating.MVVM.Views
 {
     public partial class MainPage : ContentPage
     {
+        public LocalDbService LocalDbService { get; set; } =  new LocalDbService();
         public MainPage()
         {
             InitializeComponent();
@@ -19,8 +22,7 @@
 
         public void GoToLogin(object sender, EventArgs e)
         {
-            //var loginPage = MauiProgram.CreateMauiApp().Services.GetRequiredService<LoginPage>();
-            //Application.Current.MainPage = loginPage;
+            Application.Current.MainPage = new LoginPage(LocalDbService);
         }
     }
 }

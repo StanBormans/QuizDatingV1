@@ -1,3 +1,4 @@
+using QuizDating.Data;
 using QuizDating.Models;
 
 namespace QuizDating.MVVM.Views;
