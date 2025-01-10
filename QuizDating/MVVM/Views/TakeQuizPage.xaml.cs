@@ -117,9 +117,18 @@ public partial class TakeQuizPage : ContentPage
             }
         }
 
-        // Save the character result
+        // Save the updated CharacterResult to the database
         var dbService = new LocalDbService();
         await dbService.UpdateCharacterResult(_characterResult);
+
+        // Link the CharacterResult to the logged-in user
+        var user = SessionService.LoggedInUser;
+        if (user != null)
+        {
+            user.CharacterResultId = _characterResult.Id;
+            user.CharacterResult = _characterResult;
+            await dbService.UpdateUser(user); // Save user changes to the database
+        }
 
         // Show result to the user
         await DisplayAlert("Quiz Complete",

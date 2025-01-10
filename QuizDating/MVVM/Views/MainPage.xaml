@@ -11,6 +11,21 @@
 
             <Button
                 FontSize="18"
+                Text="Profiel"
+                TextColor="White"
+                BackgroundColor="#0AD8C8"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                WidthRequest="100"
+                HeightRequest="40"
+                CornerRadius="10"
+                BorderColor="black"
+                BorderWidth="1"
+                ZIndex="10"
+                Clicked="GotToProfile" />
+
+            <Button
+                FontSize="18"
                 Text="Logout"
                 TextColor="White"
                 BackgroundColor="#0AD8C8"

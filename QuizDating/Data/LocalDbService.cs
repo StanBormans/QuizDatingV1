@@ -39,6 +39,14 @@ namespace QuizDating.Data
             return _connection.Table<User>().FirstOrDefault(u => u.UserName == username);
         }
 
+        public async Task UpdateUser(User user)
+        {
+            if (user != null)
+            {
+                _connection.Update(user);
+            }
+        }
+
         //Quiz
 
         public async Task CreateQuiz(Quiz quiz)
@@ -114,6 +122,13 @@ namespace QuizDating.Data
         public async Task UpdateCharacterResult(CharacterResult result)
         {
             _connection.Update(result);
+        }
+
+        // CharacterResult
+
+        public CharacterResult GetCharacterResult(int id)
+        {
+            return _connection.Table<CharacterResult>().FirstOrDefault(cr => cr.Id == id);
         }
     }
 }
