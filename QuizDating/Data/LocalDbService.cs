@@ -21,6 +21,8 @@ namespace QuizDating.Data
             );
             _connection.CreateTable<User>();
             _connection.CreateTable<Quiz>();
+            
+            _connection.CreateTable<CharacterResult>();
             _connection.CreateTable<Question>();
         }
 
@@ -54,6 +56,22 @@ namespace QuizDating.Data
             return quizzes;
         }
 
+        public async Task<Quiz> GetQuizWithQuestions(int quizId)
+        {
+            // Fetch the quiz by Id
+            var quiz = _connection.Table<Quiz>().FirstOrDefault(q => q.Id == quizId);
+
+            if (quiz != null)
+            {
+                // Fetch and assign its questions
+                quiz.Questions = _connection.Table<Question>()
+                    .Where(q => q.QuizId == quiz.Id)
+                    .ToList();
+            }
+
+            return quiz;
+        }
+
         public async Task UpdateQuiz(Quiz quiz)
         {
             _connection.Update(quiz);
@@ -79,6 +97,11 @@ namespace QuizDating.Data
                 _connection.Delete(question);
             }
             _connection.Delete<Quiz>(quizId);
+        }
+
+        public async Task UpdateCharacterResult(CharacterResult result)
+        {
+            _connection.Update(result);
         }
     }
 }

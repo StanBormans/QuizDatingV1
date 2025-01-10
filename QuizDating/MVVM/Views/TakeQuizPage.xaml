@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizDating.MVVM.Views.TakeQuizPage"
+             Title="Take Quiz"
+             BackgroundColor="#f4f4f4">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10" Spacing="20" x:Name="QuestionsLayout">
+                <Label Text="Take Quiz" FontSize="24" HorizontalOptions="Center" />
+
+                <!-- Questions will be dynamically loaded here -->
+
+                <Button Text="Finish Quiz"
+                        FontSize="16"
+                        BackgroundColor="#0ad8c8"
+                        TextColor="White"
+                        Margin="0,20,0,0"
+                        Clicked="OnFinishQuizClicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

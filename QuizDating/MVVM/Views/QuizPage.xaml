@@ -11,6 +11,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <!-- Top Bar -->
         <Grid Grid.Row="0" Padding="10" ColumnSpacing="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -44,6 +45,8 @@
                 Grid.Column="2"
                 Clicked="OnCreateClicked" />
         </Grid>
+
+        <!-- Quiz List -->
         <CollectionView
             Grid.Row="1"
             x:Name="QuizzesLayout"
@@ -53,23 +56,34 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border
-                    Stroke="#cccccc"
-                    StrokeThickness="1"
-                    StrokeShape="Rectangle"
-                    Padding="10"
-                    Margin="0,5"
-                    BackgroundColor="White">
+                        Stroke="#cccccc"
+                        StrokeThickness="1"
+                        StrokeShape="Rectangle"
+                        Padding="10"
+                        Margin="0,5"
+                        BackgroundColor="White">
                         <VerticalStackLayout>
+                            <!-- Quiz Name -->
                             <Label
-                            Text="{Binding Name}"
-                            FontSize="16"
-                            TextColor="Black" />
+                                Text="{Binding Name}"
+                                FontSize="16"
+                                TextColor="Black" />
+
+                            <!-- Options Button -->
                             <Button
-                            Text="Options"
-                            BackgroundColor="#cccccc"
-                            TextColor="Black"
-                            CommandParameter="{Binding .}"
-                            Clicked="OnQuizOptionsClicked" />
+                                Text="Options"
+                                BackgroundColor="#cccccc"
+                                TextColor="Black"
+                                CommandParameter="{Binding .}"
+                                Clicked="OnQuizOptionsClicked" />
+
+                            <!-- Start Quiz Button -->
+                            <Button
+                                Text="Start Quiz"
+                                BackgroundColor="#0ad8c8"
+                                TextColor="White"
+                                CommandParameter="{Binding .}"
+                                Clicked="OnStartQuizClicked" />
                         </VerticalStackLayout>
                     </Border>
                 </DataTemplate>
