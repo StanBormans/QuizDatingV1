@@ -7,28 +7,42 @@ public partial class LoginPage : ContentPage
     private readonly LocalDbService _dbService;
 
     public LoginPage(LocalDbService dbService)
-	{
-        _dbService = dbService;
-		InitializeComponent();
-
-	}
-
-    public void LoginClicked(object sender, EventArgs e)
     {
-        string hardcodedUsername = "a";
-        string hardcodedPassword = "a";
+        _dbService = dbService;
+        InitializeComponent();
+    }
 
+    public async void LoginClicked(object sender, EventArgs e)
+    {
         var username = UsernameEntry.Text;
         var password = PasswordEntry.Text;
 
-        if (username == hardcodedUsername && password == hardcodedPassword)
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
         {
-            // Navigate to MainPage
-            Application.Current.MainPage = new MainPage();
+            MessageLabel.Text = "Please enter both username and password.";
+            return;
         }
-        else
+
+        try
         {
-            MessageLabel.Text = "Invalid username or password. Try again.";
+            var user = await _dbService.GetUserByUsername(username);
+
+            if (user != null && user.Password == password)
+            {
+                // Store the logged-in user in the session
+                SessionService.LoggedInUser = user;
+
+                // Navigate to MainPage
+                Application.Current.MainPage = new MainPage();
+            }
+            else
+            {
+                MessageLabel.Text = "Invalid username or password. Try again.";
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageLabel.Text = $"An error occurred: {ex.Message}";
         }
     }
 

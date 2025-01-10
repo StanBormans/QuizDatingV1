@@ -42,6 +42,7 @@ public partial class RegisterPage : ContentPage
                         });
 
                         MessageLabel.Text = "User registered successfully.";
+                        Application.Current.MainPage = new LoginPage(_dbService);
                     }
                     else
                     {

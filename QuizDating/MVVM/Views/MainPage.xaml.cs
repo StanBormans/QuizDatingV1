@@ -8,6 +8,9 @@ namespace QuizDating.MVVM.Views
         public MainPage()
         {
             InitializeComponent();
+
+            var user = SessionService.LoggedInUser;
+            TestLabel.Text = $"Current user is: {user.UserName}";
         }
 
         public void GoToQuiz(object sender, EventArgs e)
@@ -22,6 +25,7 @@ namespace QuizDating.MVVM.Views
 
         public void GoToLogin(object sender, EventArgs e)
         {
+            SessionService.Logout();
             Application.Current.MainPage = new LoginPage(LocalDbService);
         }
     }

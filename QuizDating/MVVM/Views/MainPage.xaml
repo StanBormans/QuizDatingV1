@@ -30,9 +30,14 @@
                 HeightRequest="300"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                TranslationY="-25" /> 
+                TranslationY="-25" />
 
-           
+            <Label 
+                x:Name="TestLabel"
+                FontSize="17"
+                HorizontalTextAlignment="Center"/>
+
+
             <HorizontalStackLayout
                 HorizontalOptions="Center"
                 VerticalOptions="End"

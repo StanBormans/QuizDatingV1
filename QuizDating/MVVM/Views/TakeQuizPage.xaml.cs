@@ -104,13 +104,9 @@ public partial class TakeQuizPage : ContentPage
 
     private async void OnFinishQuizClicked(object sender, EventArgs e)
     {
-        Console.WriteLine("Calculating CharacterResult...");
-
         // Calculate final CharacterResult based on user answers
         foreach (var (question, answer) in _userAnswers)
         {
-            Console.WriteLine($"Question: {question.Title}, Answer: {answer}, EffectA: {question.EffectA}, EffectB: {question.EffectB}");
-
             if (answer == "A")
             {
                 UpdateCharacterResult(question.EffectA);
@@ -125,8 +121,6 @@ public partial class TakeQuizPage : ContentPage
         var dbService = new LocalDbService();
         await dbService.UpdateCharacterResult(_characterResult);
 
-        Console.WriteLine($"Final CharacterResult: Outgoing={_characterResult.Outgoing}, Social={_characterResult.Social}, Openness={_characterResult.Opennes}");
-
         // Show result to the user
         await DisplayAlert("Quiz Complete",
             $"Outgoing: {_characterResult.Outgoing}\nSocial: {_characterResult.Social}\nOpenness: {_characterResult.Opennes}",
@@ -138,14 +132,6 @@ public partial class TakeQuizPage : ContentPage
 
     private void UpdateCharacterResult(string effect)
     {
-        if (effect == null)
-        {
-            Console.WriteLine("Effect is null; skipping update.");
-            return;
-        }
-
-        Console.WriteLine($"Updating CharacterResult for effect: {effect}");
-
         switch (effect)
         {
             case "Outgoing":
@@ -158,7 +144,6 @@ public partial class TakeQuizPage : ContentPage
                 _characterResult.Opennes += 10;
                 break;
             default:
-                Console.WriteLine($"Unknown effect: {effect}");
                 break;
         }
     }
