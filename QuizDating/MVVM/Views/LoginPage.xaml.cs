@@ -1,12 +1,16 @@
+using QuizDating.Data;
+
 namespace QuizDating.MVVM.Views;
 
 public partial class LoginPage : ContentPage
 {
     private readonly LocalDbService _dbService;
 
-    public LoginPage()
+    public LoginPage(LocalDbService dbService)
 	{
+        _dbService = dbService;
 		InitializeComponent();
+
 	}
 
     public void LoginClicked(object sender, EventArgs e)

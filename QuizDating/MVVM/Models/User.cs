@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace QuizDating.Models
 {
-    [Table("person")]
     public class User
     {
         [PrimaryKey]
@@ -20,10 +19,13 @@ namespace QuizDating.Models
         public string? Password { get; set; }
         [Column("ProfolePicture")]
         public string? ProfilePicture {  get; set; }
+        [Ignore]
         public List<Match> Matches { get; set; } = new List<Match>();
+        [Ignore]
         public List<Quiz> Quizes { get; set; } = new List<Quiz>();
         [Column("CharacterResultId")]
         public int CharacterResultId { get; set; }
+        [Ignore]
         public CharacterResult? CharacterResult { get; set; }
     }
 }

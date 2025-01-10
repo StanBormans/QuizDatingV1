@@ -1,14 +1,17 @@
 ﻿using QuizDating.MVVM.Views;
+using QuizDating.Data;
 
 namespace QuizDating
 {
     public partial class App : Application
     {
-        public App()
+        public static LocalDbService _db { get; set; }
+        public App(LocalDbService db)
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            _db = db;
+            MainPage = new LoginPage(_db);
         }
     }
 }
