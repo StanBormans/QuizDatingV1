@@ -1,13 +1,16 @@
-﻿using QuizDating.Data;
+﻿using Microsoft.Extensions.Configuration;
+using QuizDating.Data;
 
 namespace QuizDating.MVVM.Views
 {
     public partial class MainPage : ContentPage
     {
         public LocalDbService LocalDbService { get; set; } =  new LocalDbService();
+
         public MainPage()
         {
             InitializeComponent();
+
 
             var user = SessionService.LoggedInUser;
             TestLabel.Text = $"Current user is: {user.UserName}";
