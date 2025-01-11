@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:QuizDating.MVVM.ViewModels"
              x:Class="QuizDating.MVVM.Views.LoginPage"
              Title="LoginPage"
              BackgroundColor="#f883b7">
@@ -14,8 +15,7 @@
             WidthRequest="250"
             HeightRequest="250"
             HorizontalOptions="Center"
-            VerticalOptions="Center"
-            />
+            VerticalOptions="Center" />
 
         <Label 
             Text="Login"
@@ -29,8 +29,7 @@
             <Label 
                 Text="Gebruikersnaam: "
                 TextColor="White"
-                FontSize="20"
-                />
+                FontSize="20" />
 
             <Border
                 Stroke="Black"
@@ -42,8 +41,8 @@
                 HorizontalOptions="Center">
 
                 <Entry 
-                    x:Name="UsernameEntry"
                     Placeholder="Gebruikersnaam"
+                    Text="{Binding Username}"
                     TextColor="Black"
                     BackgroundColor="Transparent"
                     WidthRequest="300"
@@ -56,8 +55,7 @@
             <Label 
                 Text="Wachtwoord: "
                 TextColor="White"
-                FontSize="20"
-                />
+                FontSize="20" />
             <Border
                 Stroke="Black"
                 StrokeThickness="1"
@@ -68,8 +66,8 @@
                 HorizontalOptions="Center">
 
                 <Entry 
-                    x:Name="PasswordEntry"
                     Placeholder="Wachtwoord"
+                    Text="{Binding Password}"
                     IsPassword="True"
                     TextColor="Black"
                     BackgroundColor="Transparent"
@@ -88,7 +86,7 @@
                         FontAttributes="Bold"
                         TextDecorations="Underline">
                         <Span.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="RegisterClicked" />
+                            <TapGestureRecognizer Command="{Binding RegisterCommand}" />
                         </Span.GestureRecognizers>
                     </Span>
                     <Span Text=" om te registreren." />
@@ -97,7 +95,7 @@
         </Label>
 
         <Label 
-            x:Name="MessageLabel"
+            Text="{Binding Message}"
             FontSize="Small"
             TextColor="Red"
             HorizontalOptions="Center" />
@@ -107,9 +105,9 @@
             FontSize="20"
             BackgroundColor="#0ad8c8"
             TextColor="White"
-            Clicked="LoginClicked"
+            Command="{Binding LoginCommand}"
             WidthRequest="200"
             BorderColor="Black"
-            BorderWidth="1"/>
+            BorderWidth="1" />
     </VerticalStackLayout>
 </ContentPage>

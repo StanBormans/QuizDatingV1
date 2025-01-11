@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:QuizDating.MVVM.ViewModels"
              x:Class="QuizDating.MVVM.Views.RegisterPage"
-             Title="RegisterPage"
-             BackgroundColor="#f883b7"
-             Shell.NavBarIsVisible="false">
-    <VerticalStackLayout
-    Padding="20"
-    Spacing="10">
+             Title="Register"
+             BackgroundColor="#f883b7">
 
-        <Image 
-        Source="logo.png"
-        WidthRequest="250"
-        HeightRequest="250"
-        HorizontalOptions="Center"
-        VerticalOptions="Center"
-        />
+    <VerticalStackLayout Padding="20" Spacing="10">
 
         <Label 
-        Text="Registeer"
-        FontSize="36"
-        TextColor="White"
-        FontAttributes="Bold"
-        HorizontalOptions="Center" />
-
-        <VerticalStackLayout
-        HorizontalOptions="Center">
-            <Label 
-            Text="{Binding UserName}"
+            Text="Register"
+            FontSize="36"
             TextColor="White"
-            FontSize="20"
-            />
+            FontAttributes="Bold"
+            HorizontalOptions="Center" />
 
+        <VerticalStackLayout HorizontalOptions="Center">
+            <Label Text="Gebruikersnaam:" TextColor="White" FontSize="20" />
             <Border
                 Stroke="Black"
                 StrokeThickness="1"
@@ -42,8 +27,8 @@
                 HorizontalOptions="Center">
 
                 <Entry 
-                    x:Name="UsernameEntry"
                     Placeholder="Gebruikersnaam"
+                    Text="{Binding Username}"
                     TextColor="Black"
                     BackgroundColor="Transparent"
                     WidthRequest="300"
@@ -51,13 +36,8 @@
             </Border>
         </VerticalStackLayout>
 
-        <VerticalStackLayout
-        HorizontalOptions="Center">
-            <Label 
-            Text="{Binding Password}"
-            TextColor="White"
-            FontSize="20"
-            />
+        <VerticalStackLayout HorizontalOptions="Center">
+            <Label Text="Wachtwoord:" TextColor="White" FontSize="20" />
             <Border
                 Stroke="Black"
                 StrokeThickness="1"
@@ -68,8 +48,8 @@
                 HorizontalOptions="Center">
 
                 <Entry 
-                    x:Name="PasswordEntry"
                     Placeholder="Wachtwoord"
+                    Text="{Binding Password}"
                     IsPassword="True"
                     TextColor="Black"
                     BackgroundColor="Transparent"
@@ -78,13 +58,8 @@
             </Border>
         </VerticalStackLayout>
 
-        <VerticalStackLayout
-        HorizontalOptions="Center">
-            <Label 
-                Text="{Binding ConfirmPassword}"
-                TextColor="White"
-                FontSize="20"
-                />
+        <VerticalStackLayout HorizontalOptions="Center">
+            <Label Text="Bevestig Wachtwoord:" TextColor="White" FontSize="20" />
             <Border
                 Stroke="Black"
                 StrokeThickness="1"
@@ -95,8 +70,8 @@
                 HorizontalOptions="Center">
 
                 <Entry 
-                    x:Name="ConfirmPasswordEntry"
-                    Placeholder="Bevestig wachtwoord"
+                    Placeholder="Bevestig Wachtwoord"
+                    Text="{Binding ConfirmPassword}"
                     IsPassword="True"
                     TextColor="Black"
                     BackgroundColor="Transparent"
@@ -106,21 +81,19 @@
         </VerticalStackLayout>
 
         <Label 
-             x:Name="MessageLabel"
-             FontSize="Small"
-             TextColor="Red"
-             HorizontalOptions="Center" />
+            Text="{Binding Message}"
+            FontSize="Small"
+            TextColor="Red"
+            HorizontalOptions="Center" />
 
         <Button 
-            x:Name="saveButton"
-            Text="Registeer"
+            Text="Register"
             FontSize="20"
             BackgroundColor="#0ad8c8"
             TextColor="White"
-            Clicked="OnRegisterClicked"
+            Command="{Binding RegisterCommand}"
             WidthRequest="200"
             BorderColor="Black"
-            BorderWidth="1"
-            TranslationY="30" />
+            BorderWidth="1" />
     </VerticalStackLayout>
 </ContentPage>
