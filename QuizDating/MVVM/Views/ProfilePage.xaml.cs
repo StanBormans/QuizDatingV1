@@ -1,14 +1,23 @@
+using Azure;
+using Microsoft.Extensions.Configuration;
 using QuizDating.Data;
+using System.IO;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace QuizDating.MVVM.Views;
 
 public partial class ProfilePage : ContentPage
 {
+    private readonly string _apiKey = "EVb51yugKiowKHysnATpaSlRHBgYIYCMelkCKtpUTmkYeCtdR7pTJQQJ99BAAC5RqLJXJ3w3AAAFACOGjReh";
+    private readonly string _endpoint = "https://computer-vision-api-quizdating.cognitiveservices.azure.com/";
+
     public ProfilePage()
     {
         InitializeComponent();
 
-        // Load user data
         LoadUserProfile();
     }
 
@@ -32,7 +41,6 @@ public partial class ProfilePage : ContentPage
                 OpennessLabel.Text = "Openness: 0";
             }
 
-            // Load the user's profile picture if set
             if (!string.IsNullOrEmpty(user.ProfilePicture))
             {
                 ProfileImage.Source = user.ProfilePicture;
@@ -49,25 +57,49 @@ public partial class ProfilePage : ContentPage
 
     private async void OnUpdateProfilePictureClicked(object sender, EventArgs e)
     {
-        // Allow the user to pick a new profile picture
         var result = await FilePicker.PickAsync();
-        if (result != null)
+        if (result == null) return;
+
+        try
         {
+            bool isSafe = await AnalyzeImageForExplicitContent(result.FullPath);
+            if (!isSafe)
+            {
+                await DisplayAlert("Warning", "The selected image contains inappropriate content. Please choose a different image.", "OK");
+                return;
+            }
+
             var user = SessionService.LoggedInUser;
             if (user != null)
             {
                 user.ProfilePicture = result.FullPath;
 
-                // Save the updated user data
                 var dbService = new LocalDbService();
                 await dbService.UpdateUser(user);
 
-                // Update the displayed profile picture
                 ProfileImage.Source = result.FullPath;
-
                 await DisplayAlert("Success", "Profile picture updated successfully.", "OK");
             }
         }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+        }
+    }
+
+    private async Task<bool> AnalyzeImageForExplicitContent(string imagePath)
+    {
+        var client = new ComputerVisionClient(new ApiKeyServiceClientCredentials(_apiKey))
+        {
+            Endpoint = _endpoint
+        };
+
+        var features = new List<VisualFeatureTypes?> { VisualFeatureTypes.Adult };
+
+        using var imageStream = File.OpenRead(imagePath);
+        ImageAnalysis analysisResult = await client.AnalyzeImageInStreamAsync(imageStream, features);
+
+        return !(analysisResult.Adult.IsAdultContent || analysisResult.Adult.IsRacyContent || analysisResult.Adult.IsGoryContent);
     }
 
     private void OnBackClicked(object sender, EventArgs e)

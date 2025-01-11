@@ -47,6 +47,23 @@ namespace QuizDating.Data
             }
         }
 
+        public List<User> GetUsers()
+        {
+            var users = _connection.Table<User>().ToList();
+
+            // Load CharacterResult for each user
+            foreach (var user in users)
+            {
+                if (user.CharacterResultId > 0)
+                {
+                    user.CharacterResult = _connection.Table<CharacterResult>()
+                        .FirstOrDefault(cr => cr.Id == user.CharacterResultId);
+                }
+            }
+
+            return users;
+        }
+
         //Quiz
 
         public async Task CreateQuiz(Quiz quiz)
