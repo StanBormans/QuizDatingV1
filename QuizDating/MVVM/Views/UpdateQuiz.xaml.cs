@@ -60,9 +60,14 @@ public partial class UpdateQuiz : ContentPage
 
     private async void OnSaveChangesClicked(object sender, EventArgs e)
     {
+        // Update the quiz name
         _quiz.Name = QuizNameEntry.Text;
 
-        _quiz.Questions.Clear();
+        // Clear the existing questions in the database
+        var dbService = new LocalDbService();
+        await dbService.DeleteQuestionsForQuiz(_quiz.Id); // Custom function to delete old questions
+
+        // Add updated questions
         foreach (var stack in _questionEntries)
         {
             var title = ((Entry)stack.Children[0]).Text;
@@ -84,10 +89,13 @@ public partial class UpdateQuiz : ContentPage
             });
         }
 
-        var dbService = new LocalDbService();
+        // Update the quiz and save changes
         await dbService.UpdateQuiz(_quiz);
 
+        // Show success message
         await DisplayAlert("Success", "Quiz updated successfully!", "OK");
+
+        // Navigate back to the quiz page
         Application.Current.MainPage = new QuizPage();
     }
 }
