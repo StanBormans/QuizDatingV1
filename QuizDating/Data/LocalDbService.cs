@@ -126,6 +126,15 @@ namespace QuizDating.Data
             }
         }
 
+        public async Task DeleteQuestionsForQuiz(int quizId)
+        {
+            var questionsToDelete = _connection.Table<Question>().Where(q => q.QuizId == quizId).ToList();
+            foreach (var question in questionsToDelete)
+            {
+                _connection.Delete(question);
+            }
+        }
+
         public async Task DeleteQuiz(int quizId)
         {
             var questions = _connection.Table<Question>().Where(q => q.QuizId == quizId).ToList();
