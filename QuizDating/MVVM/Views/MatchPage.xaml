@@ -3,39 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QuizDating.MVVM.Views.MatchPage"
              Title="Find Matches"
-             BackgroundColor="#f0f0f0">
-    <StackLayout Padding="20" Spacing="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <!-- Profile Picture -->
-        <Button 
-            HorizontalOptions="Start"
+             BackgroundColor="#F883B7">
+    <VerticalStackLayout
+        Padding="10">
+        <Button
+            FontSize="18"
             Text="Back"
-            Clicked="OnBackClicked"/>
+            TextColor="White"
+            BackgroundColor="#0AD8C8"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            WidthRequest="100"
+            HeightRequest="40"
+            CornerRadius="10"
+            BorderColor="black"
+            BorderWidth="1"
+            Clicked="OnBackClicked" />
+        <StackLayout Margin="0, 180, 0, 0" Padding="20" Spacing="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
 
-        <Label x:Name="AllUsersLabel"
-               FontSize="16"
-               TextColor="Gray"
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               BackgroundColor="Blue"
-               WidthRequest="100"
-               HeightRequest="20"/>
+            <Image x:Name="ProfileImage"
+                HeightRequest="200"
+                WidthRequest="200"
+                HorizontalOptions="Center" />
 
-        <Image x:Name="ProfileImage"
-            HeightRequest="200"
-            WidthRequest="200"
-            HorizontalOptions="Center" />
+            <Label x:Name="UsernameLabel"
+                FontSize="24"
+                TextColor="Black"
+                HorizontalOptions="Center" />
 
-        <!-- Username -->
-        <Label x:Name="UsernameLabel"
-            FontSize="24"
-            TextColor="Black"
-            HorizontalOptions="Center" />
-
-
-        <!-- Swipe Buttons -->
-        <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
-            <Button Text="Dislike" BackgroundColor="Red" TextColor="White" Clicked="Dislike" />
-            <Button Text="Like" BackgroundColor="Green" TextColor="White" Clicked="Like" />
+            <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                <Button Text="Dislike" BackgroundColor="Red" TextColor="White" Clicked="Dislike" />
+                <Button Text="Like" BackgroundColor="Green" TextColor="White" Clicked="Like" />
+            </StackLayout>
         </StackLayout>
-    </StackLayout>
+    </VerticalStackLayout>
 </ContentPage>
