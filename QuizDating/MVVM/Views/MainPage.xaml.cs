@@ -13,7 +13,6 @@ namespace QuizDating.MVVM.Views
 
 
             var user = SessionService.LoggedInUser;
-            TestLabel.Text = $"Current user is: {user.UserName}";
         }
 
         public void GoToQuiz(object sender, EventArgs e)

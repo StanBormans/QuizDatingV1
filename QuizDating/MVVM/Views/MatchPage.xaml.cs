@@ -24,34 +24,27 @@ public partial class MatchPage : ContentPage
             new User
             {
                 Id = 1,
-                UserName = "Default User",
-                ProfilePicture = "default_profile_pic.jpg",
-                CharacterResult = new CharacterResult { Outgoing = 0, Social = 0, Opennes = 0 }
-            },
-            new User
-            {
-                Id = 2,
                 UserName = "Alice",
                 ProfilePicture = "alice.jpg",
                 CharacterResult = new CharacterResult { Outgoing = 10, Social = 10, Opennes = 10 }
             },
             new User
             {
-                Id = 3,
+                Id = 2,
                 UserName = "Bob",
                 ProfilePicture = "bob.jpg",
                 CharacterResult = new CharacterResult { Outgoing = 0, Social = 20, Opennes = 0 }
             },
             new User
             {
-                Id = 4,
+                Id = 3,
                 UserName = "Carol",
                 ProfilePicture = "Carol",
                 CharacterResult = new CharacterResult { Outgoing = 0, Social = 0, Opennes = 0 }
             },
             new User
             {
-                Id = 5,
+                Id = 4,
                 UserName = "Bas",
                 ProfilePicture = "default_profile_pic.jpg",
                 CharacterResult = new CharacterResult { Outgoing = 0, Social = 0, Opennes = 0 }

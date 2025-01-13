@@ -9,35 +9,37 @@
             Padding="20"
             Spacing="25">
 
-            <Button
-                FontSize="18"
-                Text="Profiel"
-                TextColor="White"
-                BackgroundColor="#0AD8C8"
-                HorizontalOptions="Start"
-                VerticalOptions="Start"
-                WidthRequest="100"
-                HeightRequest="40"
-                CornerRadius="10"
-                BorderColor="black"
-                BorderWidth="1"
-                ZIndex="10"
-                Clicked="GotToProfile" />
+            <AbsoluteLayout BackgroundColor="#F883B7">
+                <!-- Profile Button -->
+                <Button
+                    FontSize="18"
+                    Text="Profiel"
+                    TextColor="White"
+                    BackgroundColor="#0AD8C8"
+                    WidthRequest="100"
+                    HeightRequest="40"
+                    CornerRadius="10"
+                    BorderColor="black"
+                    BorderWidth="1"
+                    Clicked="GotToProfile"
+                    AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
 
-            <Button
-                FontSize="18"
-                Text="Logout"
-                TextColor="White"
-                BackgroundColor="#0AD8C8"
-                HorizontalOptions="End"
-                VerticalOptions="Start"
-                WidthRequest="100"
-                HeightRequest="40"
-                CornerRadius="10"
-                BorderColor="black"
-                BorderWidth="1"
-                ZIndex="10"
-                Clicked="GoToLogin" />
+                <!-- Logout Button -->
+                <Button
+                    FontSize="18"
+                    Text="Logout"
+                    TextColor="White"
+                    BackgroundColor="#0AD8C8"
+                    WidthRequest="100"
+                    HeightRequest="40"
+                    CornerRadius="10"
+                    BorderColor="black"
+                    BorderWidth="1"
+                    Clicked="GoToLogin"
+                    AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+            </AbsoluteLayout>
 
             <Image
                 Source="logo.png"
@@ -46,11 +48,6 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 TranslationY="-25" />
-
-            <Label 
-                x:Name="TestLabel"
-                FontSize="17"
-                HorizontalTextAlignment="Center"/>
 
 
             <HorizontalStackLayout
